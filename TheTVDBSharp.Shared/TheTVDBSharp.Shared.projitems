@@ -55,7 +55,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)TheTvDbBadResponseException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TheTvDbCacheUpdateException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TheTvDbClient.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TheTvDbManager1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TheTvDbManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TheTvDbParseException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TheTvDbServerNotAvailableException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Updates\TheTvDbBannerUpdate.cs" />

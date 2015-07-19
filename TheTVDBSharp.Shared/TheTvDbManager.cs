@@ -7,7 +7,7 @@ using TheTVDBSharp.Updates;
 
 namespace TheTVDBSharp
 {
-    public class TheTvDbManager1
+    public class TheTvDbManager
     {
 
         private readonly ITheTvDbCache _cache;
@@ -19,7 +19,7 @@ namespace TheTVDBSharp
         private readonly TheTvDbLanguage _preferredLanguage;
         public TheTvDbLanguage PreferredLanguage => _preferredLanguage;
 
-        public TheTvDbManager1(ITheTvDbCache cache, ITheTvDbClient client, TheTvDbLanguage preferredLanguage)
+        public TheTvDbManager(ITheTvDbCache cache, ITheTvDbClient client, TheTvDbLanguage preferredLanguage)
         {
             _cache = cache;
             _client = client;
