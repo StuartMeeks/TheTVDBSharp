@@ -1,5 +1,4 @@
 ﻿using System;
-using TheTVDBSharp.Models;
 
 namespace TheTVDBSharp.Tests
 {
@@ -8,15 +7,15 @@ namespace TheTVDBSharp.Tests
         public static readonly string ApiKey = "";
         public static readonly string BaseUrl = "http://thetvdb.com";
 
-        public static IApiConfiguration ApiConfiguration
+        public static ITheTvDbApiConfiguration ApiConfiguration
         {
             get
             {
-                return new ApiConfiguration(ApiKey, BaseUrl);
+                return new TheTvDbApiConfiguration(ApiKey, BaseUrl);
             }
         }
 
-        public static ITheTvdbManager Manager
+        public static ITheTvDbClient Manager
         {
             get
             {
@@ -26,7 +25,7 @@ namespace TheTVDBSharp.Tests
                 // If the api key is not valid the server returns a 404 (.... crap ....) so I was not able
                 // to create a unique exception for that case. TheTVDB triggers 404 also in many other cases.
 
-                return new TheTvdbManager(ApiKey);
+                return new TheTvDbClient(ApiKey);
             }
         }
     }

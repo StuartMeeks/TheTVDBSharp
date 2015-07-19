@@ -1,4 +1,5 @@
 ﻿using System;
+using TheTVDBSharp.Entities;
 
 namespace TheTVDBSharp.Samples.SimpleSearch
 {
@@ -6,7 +7,7 @@ namespace TheTVDBSharp.Samples.SimpleSearch
     {
         static void Main()
         {
-            var tvdb = GlobalConfiguration.Manager;
+            var tvdb = GlobalConfiguration.Client;
 
             while (true)
             {
@@ -20,7 +21,7 @@ namespace TheTVDBSharp.Samples.SimpleSearch
                 Console.WriteLine();
 
                 // Search for a series by name and with a specified language.
-                var searchResult = tvdb.SearchSeries(searchQuery, TheTVDBSharp.Models.Language.English).GetAwaiter().GetResult();
+                var searchResult = tvdb.SearchSeriesAsync(searchQuery, TheTvDbLanguage.English).GetAwaiter().GetResult();
 
                 Console.WriteLine("{0} shows found... Downloading each show", searchResult.Count);
                 Console.WriteLine();
@@ -30,9 +31,9 @@ namespace TheTVDBSharp.Samples.SimpleSearch
                 {
                     // To get more details of a series (not just metadata) like all episodes or banners 
                     // or actors call GetSeries(seriesId, language)
-                    var fullSeries = tvdb.GetSeries(series.Id, TheTVDBSharp.Models.Language.English).GetAwaiter().GetResult();
+                    var fullSeries = tvdb.GetSeriesAsync(series.SeriesId, TheTvDbLanguage.English).GetAwaiter().GetResult();
 
-                    Console.WriteLine("- {0} ({1} Episodes)", series.Title, fullSeries.Episodes.Count);
+                    Console.WriteLine("- {0} ({1} Episodes)", series.SeriesName, fullSeries.Episodes.Count);
                 }
 
                 Console.WriteLine();

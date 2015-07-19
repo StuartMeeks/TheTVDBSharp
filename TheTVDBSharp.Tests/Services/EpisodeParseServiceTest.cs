@@ -1,14 +1,13 @@
 ﻿using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using System.Threading.Tasks;
-using TheTVDBSharp.Services;
-using TheTVDBSharp.Services.Libs;
+using TheTVDBSharp.Parsers;
 
 namespace TheTVDBSharp.Tests.Services
 {
     [TestClass]
     public class EpisodeParseServiceTest
     {
-        private readonly IEpisodeParseService _episodeParseService = new EpisodeParseService();
+        private readonly ITheTvDbEpisodeParser _episodeParseService = new TheTvDbEpisodeParser();
 
         [TestMethod]
         public async Task Parse_Episode_306213_Test()
@@ -17,7 +16,7 @@ namespace TheTVDBSharp.Tests.Services
             var episode = _episodeParseService.Parse(sampleEpisodeRaw);
             
             Assert.IsNotNull(episode);
-            Assert.AreEqual((uint)306213, episode.Id);
+            Assert.AreEqual((uint)306213, episode.EpisodeId);
             Assert.AreEqual(5, episode.GuestStars.Count);
             Assert.AreEqual(1, episode.Writers.Count);
             Assert.AreEqual(1, episode.Directors.Count);

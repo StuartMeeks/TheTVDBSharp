@@ -1,7 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System.Collections.ObjectModel;
-using TheTVDBSharp.Models;
+using TheTVDBSharp.Entities;
 using System;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -12,7 +12,7 @@ namespace TheTVDBSharp.Samples.Serializer
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        private readonly ITheTvdbManager Manager = GlobalConfiguration.Manager;
+        private readonly ITheTvDbClient Client = GlobalConfiguration.Client;
         private string _searchText;
 
         public string SearchText
@@ -32,7 +32,7 @@ namespace TheTVDBSharp.Samples.Serializer
 
         public RelayCommand SerializeCommand { get; }
 
-        public ObservableCollection<Series> SeriesCollection { get; } = new ObservableCollection<Series>();
+        public ObservableCollection<TheTvDbSeries> SeriesCollection { get; } = new ObservableCollection<TheTvDbSeries>();
 
         public MainWindowViewModel()
         {
@@ -57,12 +57,12 @@ namespace TheTVDBSharp.Samples.Serializer
 
         private async Task OnSearchExecuted()
         {
-            var seriesCollection = await Manager.SearchSeries(_searchText, Language.English);
+            var seriesCollection = await Client.SearchSeriesAsync(_searchText, TheTvDbLanguage.English);
             foreach (var series in seriesCollection)
             {
                 if (SeriesCollection.Contains(series)) continue;
 
-                var completeSeries = await Manager.GetSeries(series.Id, Language.English);
+                var completeSeries = await Client.GetSeriesAsync(series.SeriesId, TheTvDbLanguage.English);
                 SeriesCollection.Add(completeSeries);
             }
         }

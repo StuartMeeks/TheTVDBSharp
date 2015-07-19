@@ -6,7 +6,7 @@ namespace TheTVDBSharp.Samples
     {
         public static readonly string ApiKey = "";
 
-        public static ITheTvdbManager Manager
+        public static ITheTvDbClient Client
         {
             get
             {
@@ -16,7 +16,7 @@ namespace TheTVDBSharp.Samples
                 // If the api key is not valid the server returns a 404 (.... crap ....) so I was not able
                 // to create a unique exception for that case. TheTVDB triggers 404 also in many other cases.
 
-                return new TheTvdbManager(ApiKey);
+                return new TheTvDbClient(ApiKey);
             }
         }
     }

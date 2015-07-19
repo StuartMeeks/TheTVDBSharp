@@ -1,19 +1,19 @@
 ﻿using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using System.Threading.Tasks;
+using TheTVDBSharp.Entities;
 using TheTVDBSharp.Services;
-using TheTVDBSharp.Services.Libs;
 
 namespace TheTVDBSharp.Tests.Services
 {
     [TestClass]
     public class UpdateServiceProxyTest
     {
-        readonly IUpdateService _updateService = new UpdateServiceProxy(GlobalConfiguration.ApiConfiguration);
+        readonly ITheTvDbUpdateService _updateService = new TheTvDbUpdateServiceProxy(GlobalConfiguration.ApiConfiguration);
 
         [TestMethod]
         public async Task Retrieve_Updates_Day_Test()
         {
-            var realUpdateStream = await _updateService.Retrieve(Models.Interval.Day);
+            var realUpdateStream = await _updateService.Retrieve(TheTvDbInterval.Day);
             Assert.IsNotNull(realUpdateStream);
         }
     }

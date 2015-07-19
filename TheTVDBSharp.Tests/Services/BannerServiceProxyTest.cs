@@ -1,14 +1,13 @@
 ﻿using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using System.Threading.Tasks;
 using TheTVDBSharp.Services;
-using TheTVDBSharp.Services.Libs;
 
 namespace TheTVDBSharp.Tests.Services
 {
      [TestClass]
     public class BannerServiceProxyTest
     {
-         private readonly IBannerService _bannerService = new BannerServiceProxy(GlobalConfiguration.ApiConfiguration);
+         private readonly ITheTvDbBannerService _bannerService = new TheTvDbBannerServiceProxy(GlobalConfiguration.ApiConfiguration);
 
          [TestMethod]
          public async Task Retrieve_Banner_Fanart_76156_11_Test()

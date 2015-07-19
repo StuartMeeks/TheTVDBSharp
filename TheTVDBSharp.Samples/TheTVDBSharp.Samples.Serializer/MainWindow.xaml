@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheTVDBSharp.Samples.Serializer"
-        xmlns:models="clr-namespace:TheTVDBSharp.Models;assembly=TheTVDBSharp.Portable"
+        xmlns:entities="clr-namespace:TheTVDBSharp.Entities;assembly=TheTVDBSharp.Portable"
         mc:Ignorable="d"
         Title="TheTVDB Serializer" Height="350" Width="525">
     <Window.DataContext>
@@ -31,9 +31,9 @@
         
         <ListBox Grid.Row="1" Margin="0,5" ItemsSource="{Binding SeriesCollection, Mode=OneWay}">
             <ListBox.ItemTemplate>
-                <DataTemplate DataType="models:Series">
+                <DataTemplate DataType="entities:TheTvDbSeries">
                     <TextBlock>
-                        <Run Text="{Binding Title, Mode=OneWay}" />
+                        <Run Text="{Binding SeriesName, Mode=OneWay}" />
                         (<Run Text="{Binding Episodes.Count, Mode=OneWay}" /> episodes)
                     </TextBlock>
                 </DataTemplate>
